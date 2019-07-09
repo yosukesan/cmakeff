@@ -1,12 +1,22 @@
 
+#include <algorithm>
+
 #include "cmakeff.hpp"
 
+namespace cmakeff
+{
+
+/// @input root_dir and dir_tree
+/// @output dir_tree
+/// @return none
 void CMakeFF::walk(const fs::path& root_dir, vector<fs::path>* dir_tree)
 {
     fs::recursive_directory_iterator dir_iter(root_dir), dir_end;
 
     for (; dir_iter!=dir_end; ++dir_iter)
             dir_tree->push_back(*dir_iter);
+
+    sort(dir_tree->begin(), dir_tree->end());
 }
 
 /// @input path
@@ -72,3 +82,5 @@ bool CMakeFF::is_directory(const fs::path& path)
 {
     return (fs::status(path).type() == fs::file_type::directory);
 }
+
+} // cmakeff
