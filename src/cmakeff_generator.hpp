@@ -2,12 +2,22 @@
 #pragma once
 
 #include <string>
+
+#if __GNUC__ < 8
 #include <experimental/filesystem>
+#else
+#include <filesystem>
+#endif
+
 #include <vector>
 
 using namespace std;
 
+#if __GNUC__ < 8
 namespace fs = experimental::filesystem;
+#else
+namespace fs = std::filesystem;
+#endif
 
 namespace cmakeff
 {

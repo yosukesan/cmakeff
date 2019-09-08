@@ -14,9 +14,24 @@ void CMakeFF::walk(const fs::path& root_dir, vector<fs::path>* dir_tree)
     fs::recursive_directory_iterator dir_iter(root_dir), dir_end;
 
     for (; dir_iter!=dir_end; ++dir_iter)
-            dir_tree->push_back(*dir_iter);
+    {
+        string s (dir_iter->path());
+        bool can_store (true);
 
-    sort(dir_tree->begin(), dir_tree->end());
+        for (size_t i=0; i<s.size(); i++)
+        {
+            if (s[i] == '/' && s.substr(i, 2) == "/.")
+            {
+                can_store = false;
+                break;
+            }
+        }
+
+        if (can_store)
+            dir_tree->push_back(*dir_iter);
+    }
+
+    //sort(dir_tree->begin(), dir_tree->end());
 }
 
 /// @input path
