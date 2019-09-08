@@ -18,9 +18,8 @@ cmakeff: An automatic CMakeLists.txt generator
 
 ```
 cd cmakeff
-cd cmakeff
 mkdir build; cd build
-cmake ../src && make
+cmake ../src -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS_DEBUG="-Wall -W --std=c++17  -lstdc++fs" -DCMAKE_CXX_FLAGS_RELEASE="-W -Wall --std=c++17  -lstdc++fs" && make
 ```
 cd cmakeff
 
@@ -28,11 +27,11 @@ cd cmakeff
 
 * CUI build
 
+
 ```
 cd cmakeff
-cd cmakeff
 mkdir build; cd build
-cmake -G "NMake Makefiles" ../src && make
+cmake -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS_DEBUG="-Wall -W --std=c++17  -lstdc++fs" -DCMAKE_CXX_FLAGS_RELEASE="-W -Wall --std=c++17  -lstdc++fs" ../src && make
 ```
 cd cmakeff
 
@@ -41,7 +40,7 @@ cd cmakeff
 ```
 cd cmakeff
 mkdir build; cd build
-cmake ../src && make
+cmake ../src -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS_DEBUG="-Wall -W --std=c++17  -lstdc++fs" -DCMAKE_CXX_FLAGS_RELEASE="-W -Wall --std=c++17  -lstdc++fs" && make
 ```
 cd cmakeff
 
