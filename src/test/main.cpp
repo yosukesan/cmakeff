@@ -3,6 +3,7 @@
 #include <fstream>
 
 #include "cmakeff.hpp"
+#include "parser.hpp"
 
 using namespace cmakeff;
 
