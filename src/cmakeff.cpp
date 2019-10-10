@@ -11,6 +11,10 @@ namespace cmakeff
 /// @return none
 void CMakeFF::walk(const fs::path& root_dir, vector<fs::path>* dir_tree)
 {
+
+    // check if the specified root dir is directory
+    // if not returns false. need to change the function void
+
     fs::recursive_directory_iterator dir_iter(root_dir), dir_end;
 
     for (; dir_iter!=dir_end; ++dir_iter)
@@ -20,6 +24,7 @@ void CMakeFF::walk(const fs::path& root_dir, vector<fs::path>* dir_tree)
 
         for (size_t i=0; i<s.size(); i++)
         {
+            // if hidden files or dirs ignore
             if (s[i] == '/' && s.substr(i, 2) == "/.")
             {
                 can_store = false;

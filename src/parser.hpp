@@ -5,7 +5,9 @@
 
 namespace cmakeff
 {
+class ParserCpp;
 
+template <typename Derived>
 class Parser
 {
 public:

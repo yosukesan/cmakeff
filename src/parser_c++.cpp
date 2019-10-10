@@ -4,6 +4,11 @@
 namespace cmakeff
 {
 
+//ParserCpp::ParserCpp()
+//{
+//
+//}
+
 void ParserCpp::parse(const std::string& input)
 {
 

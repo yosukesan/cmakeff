@@ -3,9 +3,11 @@
 #include <fstream>
 
 #include "cmakeff.hpp"
-#include "parser.hpp"
 
 using namespace cmakeff;
+
+
+void check_file_read(const string& source_file);
 
 int main(int argc, char* argv[])
 {
@@ -34,10 +36,35 @@ int main(int argc, char* argv[])
             cout << i << endl;
     }
 
+    //for (auto i: paths)
+    //    if (CMakeFF::is_cpp_source(i))
+    //        check_file_read(i);
+
+    // extract all non system include here
+
     ofstream ofs;
     ofs.open("CMakeLists.txt");
     ofs << cmakeff.generator().generate();
     ofs.close();
 
     return 0;
+}
+
+void check_file_read(const string& source_file)
+{
+    ifstream ifs(source_file, ifstream::in);
+
+    size_t length(0);
+
+    ifs.seekg(0, ios::end);
+    length = ifs.tellg();
+    ifs.seekg(0, ios::beg);
+
+    char buffer[length];
+    cout << "Reading " << source_file << endl;
+    ifs.read(buffer, length);
+    ifs.close();
+
+    Parser<ParserCpp> cpp;
+    cpp.parse(string(buffer));
 }

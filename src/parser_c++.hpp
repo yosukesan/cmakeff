@@ -5,8 +5,11 @@
 
 namespace cmakeff
 {
-    class ParserCpp
-    {
-        void parse(const std::string& input);
-    };
+
+class ParserCpp
+{
+public:
+    static void parse(const std::string& input);
+};
+
 }
